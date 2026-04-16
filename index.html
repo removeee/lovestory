@@ -15,82 +15,93 @@ body {
     color: #f5f5f5;
 }
 
+/* 🔥 ЦЕНТР КОНТЕНТА */
+.container {
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 25px;
+}
+
 /* экраны */
 .screen {
     display: none;
     min-height: 100vh;
-    padding: 25px 18px;
-    box-sizing: border-box;
-    opacity: 0;
-    transform: translateY(10px);
-    transition: 0.5s;
 }
 
 .active {
+    display: block;
+}
+
+/* карточка центр */
+.center {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    opacity: 1;
-    transform: translateY(0);
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
 }
 
 /* текст */
 h1 {
     font-weight: 300;
-    font-size: 22px;
+    font-size: 28px;
     line-height: 1.4;
-}
-
-h2 {
-    font-weight: 400;
-    font-size: 18px;
 }
 
 /* кнопки */
 button {
-    margin-top: 25px;
-    padding: 14px;
-    font-size: 16px;
+    margin-top: 20px;
+    padding: 14px 18px;
+    font-size: 15px;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.1);
     background: rgba(255,255,255,0.05);
     color: white;
+    cursor: pointer;
 }
 
 /* список */
 .entry {
-    margin: 10px 0;
-    padding: 14px;
-    border-radius: 12px;
+    margin: 12px 0;
+    padding: 16px;
+    border-radius: 14px;
     background: rgba(255,255,255,0.04);
+    cursor: pointer;
+    transition: 0.25s;
 }
 
-/* карточка */
+.entry:hover {
+    background: rgba(255,255,255,0.08);
+    transform: translateX(4px);
+}
+
+/* карточка записи */
 .card {
-    width: 100%;
-    background: rgba(255,255,255,0.05);
-    padding: 20px;
-    border-radius: 16px;
-    backdrop-filter: blur(15px);
+    background: rgba(255,255,255,0.04);
+    padding: 22px;
+    border-radius: 18px;
+    backdrop-filter: blur(14px);
 }
 
 /* текст */
 .text {
-    margin-top: 15px;
+    margin-top: 14px;
     line-height: 1.7;
     font-size: 15px;
-    min-height: 100px;
+    white-space: pre-line;
 }
 
-/* фото */
+/* 🖼 ВАЖНО: КАРТИНКИ БЕЗ РАСТЯЖЕНИЯ */
 img {
     width: 100%;
-    border-radius: 12px;
-    margin-top: 15px;
-    opacity: 0.9;
+    max-height: 360px;
+    margin-top: 16px;
+    border-radius: 14px;
+    object-fit: cover; /* 🔥 главное исправление */
+    display: block;
 }
 
-/* скрытое */
+/* скрыто */
 .hidden {
     display: none;
 }
