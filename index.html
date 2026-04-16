@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Дневник</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #1a1a1a, #050505);
+    color: #f5f5f5;
+}
+
+/* экраны */
+.screen {
+    display: none;
+    min-height: 100vh;
+    padding: 25px 18px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: 0.5s;
+}
+
+.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* текст */
+h1 {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+h2 {
+    font-weight: 400;
+    font-size: 18px;
+}
+
+/* кнопки */
+button {
+    margin-top: 25px;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+    color: white;
+}
+
+/* список */
+.entry {
+    margin: 10px 0;
+    padding: 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.04);
+}
+
+/* карточка */
+.card {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    padding: 20px;
+    border-radius: 16px;
+    backdrop-filter: blur(15px);
+}
+
+/* текст */
+.text {
+    margin-top: 15px;
+    line-height: 1.7;
+    font-size: 15px;
+    min-height: 100px;
+}
+
+/* фото */
+img {
+    width: 100%;
+    border-radius: 12px;
+    margin-top: 15px;
+    opacity: 0.9;
+}
+
+/* скрытое */
+.hidden {
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- старт -->
+<div id="start" class="screen active">
+    <h1>если ты это читаешь — значит, это всё было про тебя</h1>
+    <button onclick="go('list')">открыть дневник</button>
+</div>
+
+<!-- список -->
+<div id="list" class="screen">
+    <h2>дневник</h2>
+
+    <div class="entry" onclick="openEntry('e1', text1)">##.10.2023 — я заметил ее</div>
+    <div class="entry" onclick="openEntry('e2', text2)">##.12.2023  — что-то изменилось</div>
+    <div class="entry" onclick="openEntry('e3', text3)">##.03.2024 — она стала важной</div>
+    <div class="entry" onclick="openEntry('e4', text4)">##.04.2024 — я искренне люблю ее</div>
+    <div class="entry" onclick="openEntry('e5', text5)">##.06.2024-31.11.2024 — я очень сильно скучаю..</div>
+    <div class="entry" onclick="openEntry('e6', text6)">01.12.2024 — новое начало?</div>
+    <div class="entry" onclick="openEntry('e7', text7)">28.12.2024 — она прекрасная с этим кольцом</div>
+    <div class="entry" onclick="openEntry('e8', text8)">09.02.2025 — день X</div>
+    <div class="entry" onclick="go('secret')">???.?? — закрытая запись</div>
+</div>
+
+<!-- записи -->
+<div id="e1" class="screen">
+    <div class="card">
+        <h2>##.10.2023</h2>
+        <div class="text"></div>
+        <img src="img1.jpg">
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<div id="e2" class="screen">
+    <div class="card">
+        <h2>##.12.2023</h2>
+        <div class="text"></div>
+        <img src="img2.jpg">
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<div id="e3" class="screen">
+    <div class="card">
+        <h2>##.03.2024</h2>
+        <div class="text"></div>
+        <img src="img3.jpg">
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<div id="e4" class="screen">
+    <div class="card">
+        <h2>##.04.2024</h2>
+        <div class="text"></div>
+        <img src="img4.jpg">
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<div id="e5" class="screen">
+    <div class="card">
+        <h2>##.06.2024-31.11.2024</h2>
+        <div class="text"></div>
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<div id="e6" class="screen">
+    <div class="card">
+        <h2>01.12.2024</h2>
+        <div class="text"></div>
+        <img src="img5.jpg">
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<div id="e7" class="screen">
+    <div class="card">
+        <h2>28.12.2024</h2>
+        <div class="text"></div>
+        <img src="img6.jpg">
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<div id="e8" class="screen">
+    <div class="card">
+        <h2>09.02.2025</h2>
+        <div class="text"></div>
+        <img src="img7.jpg">
+        <img src="img8.jpg">
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<!-- секрет -->
+<div id="secret" class="screen">
+    <div class="card">
+        <h2>ты уверена?</h2>
+        <button onclick="showSecret()">открыть</button>
+        <div id="secretText" class="text hidden"></div>
+        <button onclick="back()">назад</button>
+    </div>
+</div>
+
+<script>
+const text1 = `я не помню точный момент
+
+но помню ощущение
+
+что среди всех людей
+
+я почему-то заметил именно ее`;
+
+const text2 = `сначала всё было обычно
+
+но потом
+
+она стала появляться в моих мыслях чаще
+
+и это уже было не просто так`;
+
+const text3 = `я начал ловить себя на том
+
+что хочу рассказывать ей всё,
+
+даже мелочи
+
+потому что она стала важной`;
+
+const text4 = `кажется, я начинаю понимать
+
+что это уже не просто симпатия
+
+я, похоже, правда начинаю любить ее`;
+
+const text5 = `странно это признавать,
+
+но я скучаю
+
+мне правда ее не хватает,
+
+я незнаю что будет дальше`;
+
+const text6 = `я самый счастливый,
+
+она мне написала!!!
+
+у меня просто нет слов,
+
+это лучший день`;
+
+const text7 = `я хочу, что бы новый год
+
+начинался с чего-то нового
+
+хочу подарить ей кольцо,
+
+думаю это очень серьезный шаг`;
+
+const text8 = `МЫ ВСТРЕЧАЕМСЯ!!!!!!!!
+
+боже как я раааад
+
+я постараюсь сделать все, что бы она была
+
+самой счастливой`;
+
+const secretText = `я люблю ее уже больше двух лет
+
+и за все время это чувство не стало слабее
+
+я точно знаю, что это не случайность
+
+это она — и на долго`;
+
+function go(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+}
+
+function openEntry(id, text) {
+    go(id);
+    typeText(text, document.querySelector('#' + id + ' .text'));
+}
+
+function back() {
+    go('list');
+}
+
+function typeText(text, element) {
+    element.innerHTML = '';
+    let i = 0;
+    let interval = setInterval(() => {
+        element.innerHTML += text[i] === '\n' ? 'br' : text[i];
+        i++;
+        if (i >= text.length) clearInterval(interval);
+    }, 20);
+}
+
+function showSecret() {
+    const el = document.getElementById('secretText');
+    el.classList.remove('hidden');
+    typeText(secretText, el);
+}
+</script>
+
+</body>
+</html>
